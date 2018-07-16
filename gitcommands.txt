@@ -1,0 +1,14 @@
+git config --global user.name <name>
+git config --global user.email <email>
+git --list
+
+git init
+git add <file>
+git commit -m "<message>"
+git status
+git diff
+
+git log
+git reset <HEAD> | <HEAD^> | <HEAD^^> | ... | ~100 <file>
+git reflog
+
