@@ -10,5 +10,10 @@ git diff
 
 git log
 git reset <HEAD> | <HEAD^> | <HEAD^^> | ... | ~100 <file>
-git reflog
+git reflog <--pretty=oneline>
+git checkout -- <file>
 
+git rm <file>
+
+# Generating a new SSH key
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
