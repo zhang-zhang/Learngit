@@ -17,3 +17,13 @@ git rm <file>
 
 # Generating a new SSH key
 $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+git remote add origin <git SSH>
+git push -u origin master
+git push origin master
+
+git checkout -b <branch>
+  - git branch <branch>
+  - git checkout <branch>
+git merge <branch>
+git branch -d <branch>  // delete the branch
