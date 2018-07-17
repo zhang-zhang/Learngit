@@ -9,6 +9,7 @@ git status
 git diff
 
 git log
+git log --graph
 git reset <HEAD> | <HEAD^> | <HEAD^^> | ... | ~100 <file>
 git reflog <--pretty=oneline>
 git checkout -- <file>
@@ -26,4 +27,37 @@ git checkout -b <branch>
   - git branch <branch>
   - git checkout <branch>
 git merge <branch>
+git merge --no-ff -m "<message>" <branch>  // 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，
+                                           // 能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 git branch -d <branch>  // delete the branch
+git branch -D <branch>  // 如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除
+
+git stash // 把当前工作现场“储藏”起来，等以后恢复现场后继续工作
+git stash list
+git stash apply  // 恢复，但是恢复后，stash内容并不删除
+git stash drop   // 删除stash
+git stash pop    // 恢复的同时把stash内容也删了
+
+git remote  // 查看远程仓库信息
+git remote -v // 查看详细信息
+
+#############################################
+多人协作的工作模式通常是这样：
+首先，可以试图用git push origin <branch-name>推送自己的修改；
+如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+如果合并有冲突，则解决冲突，并在本地提交；
+没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，
+用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+#############################################
+
+git rebase
+git tag <name>  // 默认标签是打在最新提交的commit上的
+git tag <name> <commit-id>
+git tag  // 查看标签
+git show <tagname>  // 标签不是按时间顺序列出，而是按字母排序的。可以用git show <tagname>查看标签信息
+git tag -d <tagname>
+git push origin <tagname>  // 推送某个标签到远程
+git push --tags  // 一次性推送全部尚未推送到远程的本地标签
+git push origin :refs/tags/<tagname>  // 可以删除一个远程标签
